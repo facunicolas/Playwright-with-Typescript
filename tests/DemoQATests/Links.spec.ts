@@ -1,4 +1,4 @@
-import { test, expect } from '../../utils/BasePage';
+import { test, expect } from '../../utils/Test-Base';
 
 test.beforeEach(async ({ linksPage }) => {
     await linksPage.navigate();
