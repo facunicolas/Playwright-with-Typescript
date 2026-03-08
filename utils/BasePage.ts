@@ -1,24 +1,20 @@
 import { test as base } from '@playwright/test';
 import { WebTablesPage } from '../pages/DemoQAPages/WebTablesPage';
-import { CommonActions } from '../utils/CommonActions';
 import { CheckboxPage } from '../pages/DemoQAPages/CheckBoxPage';
 import { ButtonsPage } from '../pages/DemoQAPages/ButtonsPage';
+import { LinksPage } from '../pages/DemoQAPages/LinksPage';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
     webTablesPage: WebTablesPage;
-    commonActions: CommonActions;
     checkBoxPage: CheckboxPage;
     buttonsPage: ButtonsPage;
+    linksPage: LinksPage;
 };
 
 // Exportamos un NUEVO objeto 'test' que extiende al original
 export const test = base.extend<MyFixtures>({
     // Definimos cómo se crea cada objeto
-    commonActions: async ({ page }, use) => {
-        await use(new CommonActions(page));
-    },
-
     webTablesPage: async ({ page }, use) => {
         const wtPage = new WebTablesPage(page);
         await use(wtPage);
@@ -32,9 +28,15 @@ export const test = base.extend<MyFixtures>({
     buttonsPage: async ({ page }, use) => {
         const btnPage = new ButtonsPage(page);
         await use(btnPage);
-    }
+    },
+
+    linksPage: async ({ page }, use) => {
+        const lnkPage = new LinksPage(page);
+        await use(lnkPage);
+    },
+
 
 });
 
-// Exportamos también 'expect' para tenerlo todo en un solo lugar
 export { expect } from '@playwright/test';
+export { Page } from '@playwright/test';
