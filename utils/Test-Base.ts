@@ -3,6 +3,7 @@ import { WebTablesPage } from '../pages/DemoQAPages/WebTablesPage';
 import { CheckboxPage } from '../pages/DemoQAPages/CheckBoxPage';
 import { ButtonsPage } from '../pages/DemoQAPages/ButtonsPage';
 import { LinksPage } from '../pages/DemoQAPages/LinksPage';
+import { BookStoreLoginPage } from '../pages/DemoQAPages/BookStoreLoginPage';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
@@ -10,6 +11,7 @@ type MyFixtures = {
     checkBoxPage: CheckboxPage;
     buttonsPage: ButtonsPage;
     linksPage: LinksPage;
+    bookStoreLoginPage: BookStoreLoginPage;
 };
 
 // Exportamos un NUEVO objeto 'test' que extiende al original
@@ -35,6 +37,10 @@ export const test = base.extend<MyFixtures>({
         await use(lnkPage);
     },
 
+    bookStoreLoginPage: async ({ page }, use) => {
+        const bsPage = new BookStoreLoginPage(page);
+        await use(bsPage);
+    }
 
 });
 
