@@ -1,9 +1,9 @@
 import { test as base } from '@playwright/test';
-import { WebTablesPage } from '../pages/DemoQAPages/WebTablesPage';
-import { CheckboxPage } from '../pages/DemoQAPages/CheckBoxPage';
-import { ButtonsPage } from '../pages/DemoQAPages/ButtonsPage';
-import { LinksPage } from '../pages/DemoQAPages/LinksPage';
-import { BookStoreLoginPage } from '../pages/DemoQAPages/BookStoreLoginPage';
+import { WebTablesPage } from '../pages/DemoQAPages/5.B-WebTablesPage';
+import { CheckboxPage } from '../pages/DemoQAPages/3.B-CheckBoxPage';
+import { ButtonsPage } from '../pages/DemoQAPages/2.B-ButtonsPage';
+import { LinksPage } from '../pages/DemoQAPages/4.B-LinksPage';
+import { BookStoreLoginPage } from '../pages/DemoQAPages/1.B-BookStoreLoginPage';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
