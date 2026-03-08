@@ -1,4 +1,4 @@
-import { test, expect } from '../../utils/BasePage'; 
+import { test, expect } from '../../utils/Test-Base'; 
 
 test('Test dinamico de texto al seleccionar los checkboxes', async ({ checkBoxPage }) => {
 
