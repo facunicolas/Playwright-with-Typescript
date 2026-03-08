@@ -8,6 +8,8 @@ POM (Page Object Model): Estructuración del código para separar la lógica de 
 
 Fixtures: Uso de fixtures personalizados para configurar el estado de las pruebas, gestionar la autenticación y preparar el entorno de forma limpia y reutilizable.
 _________
+NOTA IMPORTANTE: El archivo .env esta incluido en el repositorio solo para simplificar la ejecucion de las pruebas y no estaria incluido en un caso real de uso.
+_________
 Para ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 1- Clona el repositorio:
