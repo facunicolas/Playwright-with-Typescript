@@ -6,7 +6,7 @@ pero a fines practicos lo incluí para que se puedan ejecutar los tests y se
 pueda verificar cual fue la logica que usé para los mismos
 */
 
-test.only("Prueba de login en Book Store con variables de entorno", async ({ bookStoreLoginPage }) => {
+test("Prueba de login en Book Store con variables de entorno", async ({ bookStoreLoginPage }) => {
     const user = process.env.bookStoreUserName;
     const pass = process.env.bookStorePassword;
 
