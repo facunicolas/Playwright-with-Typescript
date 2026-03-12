@@ -1,9 +1,10 @@
 import { test as base } from '@playwright/test';
-import { WebTablesPage } from '../pages/DemoQAPages/5.B-WebTablesPage';
-import { CheckboxPage } from '../pages/DemoQAPages/3.B-CheckBoxPage';
-import { ButtonsPage } from '../pages/DemoQAPages/2.B-ButtonsPage';
-import { LinksPage } from '../pages/DemoQAPages/4.B-LinksPage';
 import { BookStoreLoginPage } from '../pages/DemoQAPages/1.B-BookStoreLoginPage';
+import { ButtonsPage } from '../pages/DemoQAPages/2.B-ButtonsPage';
+import { CheckboxPage } from '../pages/DemoQAPages/3.B-CheckBoxPage';
+import { LinksPage } from '../pages/DemoQAPages/4.B-LinksPage';
+import { WebTablesPage } from '../pages/DemoQAPages/5.B-WebTablesPage';
+import { BrokenLinksPage } from '../pages/DemoQAPages/6.B-BrokenLinksPage';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
@@ -12,6 +13,7 @@ type MyFixtures = {
     buttonsPage: ButtonsPage;
     linksPage: LinksPage;
     bookStoreLoginPage: BookStoreLoginPage;
+    brokenLinksPage: BrokenLinksPage;
 };
 
 // Exportamos un NUEVO objeto 'test' que extiende al original
@@ -40,6 +42,11 @@ export const test = base.extend<MyFixtures>({
     bookStoreLoginPage: async ({ page }, use) => {
         const bsPage = new BookStoreLoginPage(page);
         await use(bsPage);
+    },
+
+    brokenLinksPage: async ({ page }, use) => {
+        const blPage = new BrokenLinksPage(page);
+        await use(blPage);
     }
 
 });

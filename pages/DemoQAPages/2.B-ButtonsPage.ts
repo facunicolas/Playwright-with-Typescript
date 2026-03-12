@@ -4,7 +4,7 @@ import { Page, Locator } from '@playwright/test';
 class ButtonsPage {
     page: Page;
     doubleClickButton: Locator;
-    rightClickButton: Locator
+    rightClickButton: Locator;
     dynamicClickButton: Locator;
     doubleClickMessage: Locator;
     rightClickMessage: Locator;
