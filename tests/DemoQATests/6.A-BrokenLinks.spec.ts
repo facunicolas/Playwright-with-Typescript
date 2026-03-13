@@ -1,4 +1,3 @@
-import { LinksPage } from '../../pages/DemoQAPages/4.B-LinksPage';
 import { expect, test } from '../../utils/Test-Base';
 
 test.beforeEach(async ({ brokenLinksPage }) => {

@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test';
 
 class LinksPage {
     page: Page
+    baseUrl: string = 'https://demoqa.com';
     homeLink: Locator;
     dynamicLink: Locator
     createdLink: Locator
@@ -11,7 +12,6 @@ class LinksPage {
     unauthorizedLink: Locator
     forbiddenLink: Locator
     notFoundLink: Locator
-    baseUrl: string = 'https://demoqa.com';
 
     constructor(page: Page) {
         this.page = page;

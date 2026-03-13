@@ -2,6 +2,7 @@ import { Locator, Page } from "@playwright/test";
 
 class CheckboxPage {
     page: Page;
+    baseUrl: string = 'https://demoqa.com';
     switcher: Locator;
     treeTitles: Locator;
     checkboxHome: Locator;
@@ -15,10 +16,11 @@ class CheckboxPage {
         this.treeTitles = page.locator('.rc-tree-title');
         this.checkboxHome = page.getByRole('checkbox', { name: 'Select Home' });
         this.successTexts = page.locator('.text-success');
+        this.baseUrl = 'https://demoqa.com';
     }
 
     async navigate() {
-        await this.page.goto('https://demoqa.com/checkbox');
+        await this.page.goto(`${this.baseUrl}/checkbox`);
     }
 
     async expandAllTree() {

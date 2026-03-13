@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test';
 
 class WebTablesPage {
     page: Page;
+    baseUrl: string = 'https://demoqa.com';
     addNewRecordButton: Locator;
     firstNameInput: Locator;
     lastNameInput: Locator;
@@ -25,11 +26,11 @@ class WebTablesPage {
         this.departmentInput = page.locator('#department');
         this.submitButton = page.locator('#submit');
         this.deleteButton = page.locator('span[title="Delete"]');
-        
+        this.baseUrl = 'https://demoqa.com';
     }
 
     async navigate() {
-        await this.page.goto('https://demoqa.com/webtables');
+        await this.page.goto(`${this.baseUrl}/webtables`);
     }
 
     async addNewRecordToTable() {
