@@ -6,6 +6,7 @@ import { LinksPage } from '../pages/DemoQAPages/4.B-LinksPage';
 import { WebTablesPage } from '../pages/DemoQAPages/5.B-WebTablesPage';
 import { BrokenLinksPage } from '../pages/DemoQAPages/6.B-BrokenLinksPage';
 import { AccordianPage } from '../pages/DemoQAPages/7.B-AccordianPage';
+import { AutoCompletePage } from '../pages/DemoQAPages/8.A-AutoCompletePage';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
@@ -16,6 +17,8 @@ type MyFixtures = {
     bookStoreLoginPage: BookStoreLoginPage;
     brokenLinksPage: BrokenLinksPage;
     accordianPage: AccordianPage;
+    autoCompletePage: AutoCompletePage;
+
 };
 
 // Exportamos un NUEVO objeto 'test' que extiende al original
@@ -54,6 +57,11 @@ export const test = base.extend<MyFixtures>({
     accordianPage: async ({ page }, use) => {
         const accPage = new AccordianPage(page);
         await use(accPage);
+    },
+
+    autoCompletePage: async ({ page }, use) => {
+        const acPage = new AutoCompletePage(page);
+        await use(acPage);
     }
 
 });
