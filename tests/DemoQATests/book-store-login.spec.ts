@@ -1,4 +1,4 @@
-import { test, expect } from '../../utils/Test-Base';
+import { test, expect } from '../../utils/test-base';
 
 /*
 NOTA: En un caso real el archivo .env no deberia ser incluido en el repositorio

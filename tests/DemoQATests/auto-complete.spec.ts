@@ -1,4 +1,4 @@
-import { expect, test } from '../../utils/Test-Base';
+import { expect, test } from '../../utils/test-base';
 
 test.beforeEach(async ({ autoCompletePage }) => {
     await autoCompletePage.navigate();

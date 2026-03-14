@@ -1,4 +1,4 @@
-import { test, expect } from '../../utils/Test-Base';
+import { test, expect } from '../../utils/test-base';
 
 test("Prueba de los botones con diferentes tipos de clicks", async ({ buttonsPage }) => {
 
