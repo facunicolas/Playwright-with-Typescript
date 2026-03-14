@@ -1,15 +1,12 @@
 import { Locator, Page } from "@playwright/test";
 
-class AutoCompletePage {
-    page: Page
-    baseUrl: string = 'https://demoqa.com';
-    autoCompleteMultipleInput: Locator;
-    autoCompleteSingleInput: Locator;
-    autoCompleteSingleText: Locator;
-    clearMultipleButton: Locator;
+export class AutoCompletePage {
+    private readonly autoCompleteMultipleInput: Locator;
+    private readonly autoCompleteSingleInput: Locator;
+    private readonly autoCompleteSingleText: Locator;
+    private readonly clearMultipleButton: Locator;
 
-    constructor(page: Page) {
-        this.page = page;
+    constructor(private readonly page: Page) {
         this.autoCompleteMultipleInput = page.locator('#autoCompleteMultipleInput');
         this.autoCompleteSingleInput = page.locator('#autoCompleteSingleInput');
         this.autoCompleteSingleText = page.locator('.auto-complete__single-value');
@@ -17,7 +14,7 @@ class AutoCompletePage {
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/auto-complete`);
+        await this.page.goto(`${process.env.demoQAUrl}/auto-complete`);
     }
 
     async enterText(Locator: Locator, text: string) {
@@ -44,5 +41,3 @@ class AutoCompletePage {
     }
 
 }
-
-export { AutoCompletePage };

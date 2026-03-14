@@ -1,17 +1,12 @@
 import { Locator, Page } from "@playwright/test";
 
-class AccordianPage {
-    page: Page
-    baseUrl: string = 'https://demoqa.com';
-
-
-    constructor(page: Page) {
-        this.page = page;
-        this.baseUrl = 'https://demoqa.com';
+export class AccordianPage {
+    
+    constructor(private readonly page: Page) {
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/accordian`);
+        await this.page.goto(`${process.env.demoQAUrl}/accordian`);
     }
 
     //opensection recibe un numero del 1 al 3 para abrir la seccion correspondiente
@@ -26,5 +21,3 @@ class AccordianPage {
     };   
 
 }
-
-export { AccordianPage };

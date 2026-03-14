@@ -1,26 +1,20 @@
 import { Page, Locator } from '@playwright/test';
 
-class BookStoreLoginPage {
-    page: Page
-    baseUrl: string = 'https://demoqa.com'
-    usernameInput: Locator
-    passwordInput: Locator
-    loginButton: Locator
-    usernameLabel: Locator
+export class BookStoreLoginPage {
+    private readonly usernameInput: Locator
+    private readonly passwordInput: Locator
+    private readonly loginButton: Locator
+    private readonly usernameLabelPrivate: Locator
 
-    constructor(page: Page) {
-        this.page = page;
-
-        //selectores
+    constructor(private readonly page: Page) {
         this.usernameInput = this.page.locator('#userName');
         this.passwordInput = this.page.locator('#password');
         this.loginButton = this.page.locator('#login');
-        this.usernameLabel = this.page.locator('#userName-value');
-        this.baseUrl = 'https://demoqa.com';
+        this.usernameLabelPrivate = this.page.locator('#userName-value');
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/login`);
+        await this.page.goto(`${process.env.demoQAUrl}/login`);
     }
 
     async login(username: string, password: string) {
@@ -28,6 +22,9 @@ class BookStoreLoginPage {
         await this.passwordInput.fill(String(password));
         await this.loginButton.click();
     }
-}
 
-export { BookStoreLoginPage };
+    get usernameLabel() {
+        return this.usernameLabelPrivate;
+    }
+
+}

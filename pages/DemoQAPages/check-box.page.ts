@@ -1,26 +1,20 @@
 import { Locator, Page } from "@playwright/test";
 
-class CheckboxPage {
-    page: Page;
-    baseUrl: string = 'https://demoqa.com';
-    switcher: Locator;
-    treeTitles: Locator;
-    checkboxHome: Locator;
-    successTexts: Locator;
+export class CheckboxPage {
+    private readonly switcher: Locator;
+    private readonly treeTitles: Locator;
+    private readonly checkboxHome: Locator;
+    private readonly successTexts: Locator;
 
-    constructor(page: Page) {
-        this.page = page;
-
-        // Selectores
+    constructor(private readonly page: Page) {
         this.switcher = page.locator('.rc-tree-switcher.rc-tree-switcher_close');
         this.treeTitles = page.locator('.rc-tree-title');
         this.checkboxHome = page.getByRole('checkbox', { name: 'Select Home' });
         this.successTexts = page.locator('.text-success');
-        this.baseUrl = 'https://demoqa.com';
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/checkbox`);
+        await this.page.goto(`${process.env.demoQAUrl}/checkbox`);
     }
 
     async expandAllTree() {
@@ -51,4 +45,3 @@ class CheckboxPage {
     }
 
 }
-export { CheckboxPage };

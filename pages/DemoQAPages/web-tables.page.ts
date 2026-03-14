@@ -1,22 +1,17 @@
 import { Locator, Page } from '@playwright/test';
 
-class WebTablesPage {
-    page: Page;
-    baseUrl: string = 'https://demoqa.com';
-    addNewRecordButton: Locator;
-    firstNameInput: Locator;
-    lastNameInput: Locator;
-    emailInput: Locator;
-    ageInput: Locator;
-    salaryInput: Locator;
-    departmentInput: Locator;
-    submitButton: Locator;
-    deleteButton: Locator;
+export class WebTablesPage {
+    private readonly addNewRecordButton: Locator;
+    private readonly firstNameInput: Locator;
+    private readonly lastNameInput: Locator;
+    private readonly emailInput: Locator;
+    private readonly ageInput: Locator;
+    private readonly salaryInput: Locator;
+    private readonly departmentInput: Locator;
+    private readonly submitButton: Locator;
+    private readonly deleteButton: Locator;
 
-    constructor(page: Page) {
-        this.page = page;
-
-        // Selectores
+    constructor(private readonly page: Page) {
         this.addNewRecordButton = page.locator('#addNewRecordButton');
         this.firstNameInput = page.locator('#firstName');
         this.lastNameInput = page.locator('#lastName');
@@ -26,11 +21,10 @@ class WebTablesPage {
         this.departmentInput = page.locator('#department');
         this.submitButton = page.locator('#submit');
         this.deleteButton = page.locator('span[title="Delete"]');
-        this.baseUrl = 'https://demoqa.com';
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/webtables`);
+        await this.page.goto(`${process.env.demoQAUrl}/webtables`);
     }
 
     async addNewRecordToTable() {
@@ -64,7 +58,5 @@ class WebTablesPage {
     }
 
 }
-
-export { WebTablesPage };
 
 

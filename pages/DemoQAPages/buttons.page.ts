@@ -1,18 +1,14 @@
 import { Page, Locator } from '@playwright/test';
 
+export class ButtonsPage {
+    private readonly doubleClickButton: Locator;
+    private readonly rightClickButton: Locator;
+    private readonly dynamicClickButton: Locator;
+    private readonly doubleClickMessage: Locator;
+    private readonly rightClickMessage: Locator;
+    private readonly dynamicClickMessage: Locator;
 
-class ButtonsPage {
-    page: Page;
-    baseUrl: string = 'https://demoqa.com';
-    doubleClickButton: Locator;
-    rightClickButton: Locator;
-    dynamicClickButton: Locator;
-    doubleClickMessage: Locator;
-    rightClickMessage: Locator;
-    dynamicClickMessage: Locator;
-
-    constructor(page: Page) {
-        this.page = page;
+    constructor(private readonly page: Page) {
 
         //selectores
         this.doubleClickButton = this.page.locator('#doubleClickBtn');
@@ -21,11 +17,10 @@ class ButtonsPage {
         this.doubleClickMessage = this.page.locator('#doubleClickMessage');
         this.rightClickMessage = this.page.locator('#rightClickMessage');
         this.dynamicClickMessage = this.page.locator('#dynamicClickMessage');
-        this.baseUrl = 'https://demoqa.com';
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/buttons`);
+        await this.page.goto(`${process.env.demoQAUrl}/buttons`);
     }
 
     async doubleClick() {
@@ -41,5 +36,3 @@ class ButtonsPage {
     }
 
 }
-
-export { ButtonsPage }; 

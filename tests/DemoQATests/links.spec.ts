@@ -1,3 +1,4 @@
+import { env } from 'node:process';
 import { test, expect } from '../../utils/test-base';
 
 test.beforeEach(async ({ linksPage }) => {
@@ -13,7 +14,7 @@ test('Verificar que el link "Home" redirige a la página principal', async ({ li
             linksPage.homeLink.click()
         ]);
         // Compara la url de la nueva página con la url base del linksPage
-        await expect(newPage).toHaveURL(`${linksPage.baseUrl}`)
+        await expect(newPage).toHaveURL(`${env.demoQAUrl}`)
     });
 });
 
@@ -24,11 +25,12 @@ test('Verificar que el link Home "Dynamic" redirige a la página principal', asy
             page.waitForEvent('popup'),
             linksPage.dynamicLink.click()
         ]);
-        await expect(newPage).toHaveURL(`${linksPage.baseUrl}`)
+        await expect(newPage).toHaveURL(`${env.demoQAUrl}`)
     });
 });
 
 test('Verificar que el link "Created" devuelve el status 201-special test', async ({ linksPage }) => {
+    
     await test.step('Hacer click en el link "Created"', async () => {
         const response = await linksPage.ObtainResponseStatus(linksPage.createdLink, '/created');
 
@@ -38,6 +40,7 @@ test('Verificar que el link "Created" devuelve el status 201-special test', asyn
 
 
 test('Verificar que el link "No Content" devuelve el status 204--bis', async ({ linksPage }) => {
+    
     await test.step('Hacer click en el link "No Content"', async () => {
         const response = await linksPage.ObtainResponseStatus(linksPage.noContentLink, '/no-content');
 

@@ -18,5 +18,6 @@ test("Prueba de login en Book Store con variables de entorno", async ({ bookStor
 
     await bookStoreLoginPage.navigate();
     await bookStoreLoginPage.login(user, pass);
+
     await expect(bookStoreLoginPage.usernameLabel).toHaveText(user);
 });

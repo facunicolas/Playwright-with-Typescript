@@ -1,21 +1,18 @@
 import { Locator, Page } from "@playwright/test";
 
-class DatePickerPage {
-    page: Page
-    baseUrl: string = 'https://demoqa.com';
-    dateInput: Locator;
-    dateAndTimeInput: Locator;
-    monthSelectDate: Locator;
-    monthSelectDateAndTime: Locator;
-    yearSelect: Locator;
-    yearSelectDateAndTime: Locator;
-    daySelect: Locator;
-    timeSelect: Locator;
-    datePickerMonthContainer: Locator;
-    dateAndTimePickerInput: Locator;
+export class DatePickerPage {
+    private readonly dateInput: Locator;
+    private readonly dateAndTimeInput: Locator;
+    private readonly monthSelectDate: Locator;
+    private readonly monthSelectDateAndTime: Locator;
+    private readonly yearSelect: Locator;
+    private readonly yearSelectDateAndTime: Locator;
+    private readonly daySelect: Locator;
+    private readonly timeSelect: Locator;
+    private readonly datePickerMonthContainer: Locator;
+    private readonly dateAndTimePickerInput: Locator;
 
-    constructor(page: Page) {
-        this.page = page;
+    constructor(private readonly page: Page) {
 
         //Date Selector locators
         this.dateInput = page.locator('#datePickerMonthYearInput');
@@ -33,7 +30,7 @@ class DatePickerPage {
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/date-picker`);
+        await this.page.goto(`${process.env.demoQAUrl}/date-picker`);
     }
 
     async selectDate(month: string, year: string, day: string) {
@@ -95,6 +92,4 @@ class DatePickerPage {
         return `${hour12}:${minute.toString().padStart(2, '0')} ${period}`;
     }
 }
-
-export { DatePickerPage };
 

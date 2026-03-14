@@ -1,23 +1,18 @@
 import { Locator, Page } from "@playwright/test";
 
-class BrokenLinksPage {
-    page: Page;
-    baseUrl: string = 'https://demoqa.com';
-    brokenImage: Locator;
-    validLink: Locator;
-    brokenLink: Locator;
+export class BrokenLinksPage {
+    private readonly brokenImagePrivate: Locator;
+    private readonly validLinkPrivate: Locator;
+    private readonly brokenLinkPrivate: Locator;
 
-    constructor(page: Page) {
-        this.page = page;
-        
-        this.baseUrl = 'https://demoqa.com';
-        this.brokenImage = page.locator('img[src="/images/Toolsqa.jpg"]');
-        this.validLink = page.getByRole('link', { name: 'Click Here for Valid Link' })
-        this.brokenLink = page.getByRole('link', { name: 'Click Here for Broken Link' })
+    constructor(private readonly page: Page) {  
+        this.brokenImagePrivate = page.locator('img[src="/images/Toolsqa.jpg"]');
+        this.validLinkPrivate = page.getByRole('link', { name: 'Click Here for Valid Link' })
+        this.brokenLinkPrivate = page.getByRole('link', { name: 'Click Here for Broken Link' })
     }
 
     async navigate() {
-        await this.page.goto(`${this.baseUrl}/broken`);
+        await this.page.goto(`${process.env.demoQAUrl}/broken`);
     }
 
     async ObtainResponseStatus(link: Locator, endpointPath: string) {
@@ -31,6 +26,17 @@ class BrokenLinksPage {
         // 2. Retornamos la respuesta específica
         return await responsePromise;
     }
-}
 
-export { BrokenLinksPage };
+    get brokenImage() {
+        return this.brokenImagePrivate;
+    }
+    
+    get validLink() {
+        return this.validLinkPrivate;
+    }
+
+    get brokenLink() {
+        return this.brokenLinkPrivate;
+    }
+    
+}
