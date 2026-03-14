@@ -1,13 +1,13 @@
 import { test as base } from '@playwright/test';
-import { BookStoreLoginPage } from '../pages/DemoQAPages/book-store-login-page';
-import { ButtonsPage } from '../pages/DemoQAPages/buttons-page';
-import { CheckboxPage } from '../pages/DemoQAPages/check-box-page';
-import { LinksPage } from '../pages/DemoQAPages/links-page';
-import { WebTablesPage } from '../pages/DemoQAPages/web-tables-page';
-import { BrokenLinksPage } from '../pages/DemoQAPages/broken-links-page';
-import { AccordianPage } from '../pages/DemoQAPages/accordian-page';
-import { AutoCompletePage } from '../pages/DemoQAPages/auto-complete-page';
-import { DatePickerPage } from '../pages/DemoQAPages/date-picker-page';
+import { BookStoreLoginPage } from '../pages/DemoQAPages/book-store-login.page';
+import { ButtonsPage } from '../pages/DemoQAPages/buttons.page';
+import { CheckboxPage } from '../pages/DemoQAPages/check-box.page';
+import { LinksPage } from '../pages/DemoQAPages/links.page';
+import { WebTablesPage } from '../pages/DemoQAPages/web-tables.page';
+import { BrokenLinksPage } from '../pages/DemoQAPages/broken-links.page';
+import { AccordianPage } from '../pages/DemoQAPages/accordian.page';
+import { AutoCompletePage } from '../pages/DemoQAPages/auto-complete.page';
+import { DatePickerPage } from '../pages/DemoQAPages/date-picker.page';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
