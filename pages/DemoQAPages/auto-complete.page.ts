@@ -1,16 +1,16 @@
 import { Locator, Page } from "@playwright/test";
 
 export class AutoCompletePage {
-    private readonly autoCompleteMultipleInput: Locator;
-    private readonly autoCompleteSingleInput: Locator;
-    private readonly autoCompleteSingleText: Locator;
-    private readonly clearMultipleButton: Locator;
+    private readonly autoCompleteMultipleInputPrivate: Locator;
+    private readonly autoCompleteSingleInputPrivate: Locator;
+    private readonly autoCompleteSingleTextPrivate: Locator;
+    private readonly clearMultipleButtonPrivate: Locator;
 
     constructor(private readonly page: Page) {
-        this.autoCompleteMultipleInput = page.locator('#autoCompleteMultipleInput');
-        this.autoCompleteSingleInput = page.locator('#autoCompleteSingleInput');
-        this.autoCompleteSingleText = page.locator('.auto-complete__single-value');
-        this.clearMultipleButton = page.locator('.auto-complete__clear-indicator');
+        this.autoCompleteMultipleInputPrivate = page.locator('#autoCompleteMultipleInput');
+        this.autoCompleteSingleInputPrivate = page.locator('#autoCompleteSingleInput');
+        this.autoCompleteSingleTextPrivate = page.locator('.auto-complete__single-value');
+        this.clearMultipleButtonPrivate = page.locator('.auto-complete__clear-indicator');
     }
 
     async navigate() {
@@ -37,7 +37,24 @@ export class AutoCompletePage {
     
     //borrar todas las opciones seleccionadas
     async clearAllSelectedOptions() {
-        await this.clearMultipleButton.click();
+        await this.clearMultipleButtonPrivate.click();
     }
+
+    get autoCompleteMultipleInput() {
+        return this.autoCompleteMultipleInputPrivate;
+    }
+
+    get autoCompleteSingleInput() {
+        return this.autoCompleteSingleInputPrivate;
+    }
+
+    get autoCompleteSingleText() {
+        return this.autoCompleteSingleTextPrivate;
+    }
+
+    get clearMultipleButton() {
+        return this.clearMultipleButtonPrivate;
+    }
+
 
 }

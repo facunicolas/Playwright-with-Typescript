@@ -11,7 +11,7 @@ test('Test dinamico de texto al seleccionar los checkboxes', async ({ checkBoxPa
         .then(checkBoxPage.normalizeText);
 
     //Verifica que el título del primer nodo del árbol sea visible
-    await expect(checkBoxPage.page.locator('.rc-tree-title').first()).toBeVisible();
+    await expect(checkBoxPage.treeTitles.first()).toBeVisible();
 
     //Guarda todos los textos resultado del pie de pagina
     //cada texto debiera corresponde al label del checkbox marcado
@@ -26,7 +26,7 @@ test('Test dinamico de texto al seleccionar los checkboxes', async ({ checkBoxPa
     await checkBoxPage.selectHomeCheckbox();
 
     //Verifica que el texto de aunque sea el resultado del pie de pagina sea visible
-    await expect(checkBoxPage.page.locator('.text-success').first()).toBeVisible();
+    await expect(checkBoxPage.successTexts.first()).toBeVisible();
 
     results.forEach((result: string) => {
         expect(treeTitles, `El label ${result} no está en el árbol`).toContain(result);

@@ -4,9 +4,9 @@ export class ButtonsPage {
     private readonly doubleClickButton: Locator;
     private readonly rightClickButton: Locator;
     private readonly dynamicClickButton: Locator;
-    private readonly doubleClickMessage: Locator;
-    private readonly rightClickMessage: Locator;
-    private readonly dynamicClickMessage: Locator;
+    private readonly doubleClickMessagePrivate: Locator;
+    private readonly rightClickMessagePrivate: Locator;
+    private readonly dynamicClickMessagePrivate: Locator;
 
     constructor(private readonly page: Page) {
 
@@ -14,9 +14,9 @@ export class ButtonsPage {
         this.doubleClickButton = this.page.locator('#doubleClickBtn');
         this.rightClickButton = this.page.locator('#rightClickBtn');
         this.dynamicClickButton = this.page.getByRole('button', { name: 'Click Me', exact: true });
-        this.doubleClickMessage = this.page.locator('#doubleClickMessage');
-        this.rightClickMessage = this.page.locator('#rightClickMessage');
-        this.dynamicClickMessage = this.page.locator('#dynamicClickMessage');
+        this.doubleClickMessagePrivate = this.page.locator('#doubleClickMessage');
+        this.rightClickMessagePrivate = this.page.locator('#rightClickMessage');
+        this.dynamicClickMessagePrivate = this.page.locator('#dynamicClickMessage');
     }
 
     async navigate() {
@@ -35,4 +35,15 @@ export class ButtonsPage {
         await this.dynamicClickButton.click();
     }
 
+    get doubleClickMessage() {
+        return this.doubleClickMessagePrivate;
+    }
+
+    get rightClickMessage() {
+        return this.rightClickMessagePrivate;
+    }
+
+    get dynamicClickMessage() {
+        return this.dynamicClickMessagePrivate;
+    }
 }
