@@ -1,4 +1,5 @@
 import { test as base } from '@playwright/test';
+import { env } from 'node:process';
 import { BookStoreLoginPage } from '../pages/DemoQAPages/book-store-login.page';
 import { ButtonsPage } from '../pages/DemoQAPages/buttons.page';
 import { CheckboxPage } from '../pages/DemoQAPages/check-box.page';
@@ -81,3 +82,4 @@ export const test = base.extend<MyFixtures>({
 
 export { expect } from '@playwright/test';
 export { Page } from '@playwright/test';
+export { env } from 'node:process';
