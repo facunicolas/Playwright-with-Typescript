@@ -1,4 +1,3 @@
-import { env } from 'node:process';
 import { test, expect } from '../../utils/test-base';
 
 test.beforeEach(async ({ linksPage }) => {
@@ -14,7 +13,7 @@ test('Verificar que el link "Home" redirige a la página principal', async ({ li
             linksPage.homeLink.click()
         ]);
         // Compara la url de la nueva página con la url base del linksPage
-        await expect(newPage).toHaveURL(`${env.demoQAUrl}`)
+        await expect(newPage).toHaveURL(`${process.env.demoQAUrl}`);
     });
 });
 
@@ -25,7 +24,7 @@ test('Verificar que el link Home "Dynamic" redirige a la página principal', asy
             page.waitForEvent('popup'),
             linksPage.dynamicLink.click()
         ]);
-        await expect(newPage).toHaveURL(`${env.demoQAUrl}`)
+        await expect(newPage).toHaveURL(`${process.env.demoQAUrl}`);
     });
 });
 
