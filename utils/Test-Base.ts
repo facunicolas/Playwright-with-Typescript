@@ -10,6 +10,7 @@ import { AccordianPage } from '../pages/DemoQAPages/accordian.page';
 import { AutoCompletePage } from '../pages/DemoQAPages/auto-complete.page';
 import { DatePickerPage } from '../pages/DemoQAPages/date-picker.page';
 import { UploadDownloadPage } from '../pages/DemoQAPages/upload-download.page';
+import { FormPage } from '../pages/DemoQAPages/form.page';  
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
@@ -23,6 +24,8 @@ type MyFixtures = {
     autoCompletePage: AutoCompletePage;
     datePickerPage: DatePickerPage;
     uploadDownloadPage: UploadDownloadPage;
+    formPage: FormPage;
+
 };
 
 // Exportamos un NUEVO objeto 'test' que extiende al original
@@ -76,6 +79,11 @@ export const test = base.extend<MyFixtures>({
     uploadDownloadPage: async ({ page }, use) => {
         const udPage = new UploadDownloadPage(page);
         await use(udPage);
+    },
+
+    formPage: async ({ page }, use) => {
+        const fPage = new FormPage(page);
+        await use(fPage);
     }
 
 });
