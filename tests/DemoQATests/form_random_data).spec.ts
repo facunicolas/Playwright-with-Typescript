@@ -1,6 +1,5 @@
 import { test, expect } from '../../utils/test-base';
-import { FormData } from '../../pages/DemoQAPages/form.page';
-import path from 'path/win32';
+import { createRandomUser } from '../../utils/DataFactory';
 
 test.beforeEach(async ({ formPage }) => {
     await formPage.navigate();
@@ -8,20 +7,7 @@ test.beforeEach(async ({ formPage }) => {
 
 test('Completar y enviar el formulario', async ({ formPage }) => {
  
-    const testData: FormData = {
-        firstName: 'Pedro',
-        lastName: 'Juarez',
-        email: 'pedro.juarez@example.com',
-        gender: 'Male',
-        mobile: '1234567890',
-        dob: '10 Aug 1995',
-        subjects: ['Maths', 'Physics'],
-        hobbies: ['Sports', 'Reading'],
-        picturePath: path.join('utils', 'sampleFile.jpeg'), 
-        address: '123 Main St',
-        state: 'NCR',
-        city: 'Delhi'
-    };
+    const testData = createRandomUser();
 
     //llenar el formulario con los datos de "FormData"
     await formPage.fillForm(testData);

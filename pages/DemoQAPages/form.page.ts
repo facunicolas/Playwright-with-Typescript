@@ -56,7 +56,6 @@ export class FormPage {
             const label = this.page.locator(`label:has-text("${hobby}")`);
             const inputId = await label.getAttribute('for');
             await this.page.locator(`#${inputId}`).click({ force: true });
-            //.check({ force: true });
         }
 
         await this.page.fill('#currentAddress', data.address);
@@ -68,8 +67,7 @@ export class FormPage {
         await stateContainer.scrollIntoViewIfNeeded();
         await stateContainer.click(); // Abrimos el menú
 
-        // En lugar de escribir y dar Enter, buscamos la opción y le damos CLIC
-        // Esto evita que el "Enter" dispare el formulario
+        // En lugar de escribir y dar Enter, buscamos la opción y le damos clic
         await this.page.locator('div[id^="react-select-3-option"]').filter({ hasText: data.state }).click();
 
         // --- SECCIÓN DE CIUDAD ---
