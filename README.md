@@ -10,7 +10,7 @@ Fixtures: Uso de fixtures personalizados para configurar el estado de las prueba
 _________
 ## NOTA IMPORTANTE: El archivo .env esta incluido en el repositorio solo para simplificar la ejecucion de las pruebas y no estaria incluido en un caso real de uso.
 _________
-Para ejecutar este proyecto en tu entorno local, sigue estos pasos en la consola:
+### Para ejecutar este proyecto en tu entorno local, sigue estos pasos en la consola:
 
 1- Clona el repositorio:
 `git clone https://github.com/facunicolas/Playwright-with-Typescript.git`
@@ -21,7 +21,7 @@ Para ejecutar este proyecto en tu entorno local, sigue estos pasos en la consola
 3- Instala los navegadores necesarios:
 `npx playwright install`
 _________
-Cómo ejecutar las pruebas
+### Cómo ejecutar las pruebas
 
 Puedes ejecutar todas las pruebas con el siguiente comando:
 `npx playwright test`
@@ -29,9 +29,16 @@ Puedes ejecutar todas las pruebas con el siguiente comando:
 Para ver el reporte de resultados después de la ejecución:
 `npx playwright show-report`
 _________
-Objetivos del Proyecto
+### Objetivos del Proyecto
+
 - [x] Aprender a estructurar proyectos de automatización escalables.
 - [x] Dominio de esperas asincronas y aserciones web.
 - [x] Dominar el manejo de estados mediante fixtures.
 - [x] Implementar buenas prácticas de selectores y aserciones.
 
+_________
+### Retos Tecnicos y Soluciones
+
+Interacciones de Drag and Drop: Se detectó que en entornos de ejecución rápida (Headless), las acciones nativas de mouse no disparaban correctamente los eventos de la librería SortableJS. Se implementó una solución mediante page.evaluate para manipular el DOM directamente para garantizar la confiabilidad del test.
+
+Validación Dinámica de Formularios: En lugar de validar colores de bordes (que pueden ser inconsistentes), se utilizó la API de validación nativa de HTML5 (checkValidity) a través de Locators del POM para verificar los estados de error.
