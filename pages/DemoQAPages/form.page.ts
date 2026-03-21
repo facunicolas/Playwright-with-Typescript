@@ -20,11 +20,19 @@ export class FormPage {
     private readonly formResultPrivate: Locator;
     private readonly tableResultPrivate: Locator;
     private readonly submittedDataTablePrivate: Locator;
+    private readonly firstNameInputPrivate: Locator;
+    private readonly lastNameInputPrivate: Locator;
+    private readonly genderInputPrivate: Locator;
+    private readonly mobileInputPrivate: Locator;
 
     constructor(private readonly page: Page) {
         this.formResultPrivate = page.locator('#example-modal-sizes-title-lg');
         this.tableResultPrivate = page.locator('.table-responsive table');
         this.submittedDataTablePrivate = page.locator('.modal-body tbody');
+        this.firstNameInputPrivate = page.locator('#firstName');
+        this.lastNameInputPrivate = page.locator('#lastName');
+        this.genderInputPrivate = page.locator('input[name="gender"]').first();
+        this.mobileInputPrivate = page.locator('#userNumber');
     }
 
     async navigate() {
@@ -83,10 +91,6 @@ export class FormPage {
         await this.page.click('#submit');
     }
 
-    async formResult() {
-        return this.formResultPrivate;
-    }
-
     async formatDOB(dob: string): Promise<string> {
         const [day, monthStr, year] = dob.split(' ');
         const month = new Date(`${monthStr} 1, 2000`).toLocaleString('en-US', { month: 'long' }); // Obtener el nombre completo del mes en ingles
@@ -122,6 +126,14 @@ export class FormPage {
         await expect(rows).toContainText(expectedData.city);
     }
 
+    async checkInputValidity(selector: Locator) {
+        return await selector.evaluate((el: HTMLInputElement) => el.checkValidity());
+    }
+
+    get formResult() {
+        return this.formResultPrivate;
+    }
+
     get tableResult() {
         return this.tableResultPrivate;
     }
@@ -129,6 +141,24 @@ export class FormPage {
     get submittedDataTable() {
         return this.submittedDataTablePrivate;
     }
+
+    get firstNameInput() {
+        return this.firstNameInputPrivate;
+    }
+
+    get lastNameInput() {
+        return this.lastNameInputPrivate;
+    }
+
+    get genderInput() {
+        return this.genderInputPrivate;
+    }
+
+    get mobileInput() {
+        return this.mobileInputPrivate;
+    }
+
+
 
 
 }
