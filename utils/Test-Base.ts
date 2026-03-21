@@ -11,6 +11,8 @@ import { AutoCompletePage } from '../pages/DemoQAPages/auto-complete.page';
 import { DatePickerPage } from '../pages/DemoQAPages/date-picker.page';
 import { UploadDownloadPage } from '../pages/DemoQAPages/upload-download.page';
 import { FormPage } from '../pages/DemoQAPages/form.page';  
+import { BrowserWindowsPage } from '../pages/DemoQAPages/browser-windows.page';
+import { SortablePage } from '../pages/DemoQAPages/sortable.page';
 
 // Definimos los tipos de lo que vamos a inyectar
 type MyFixtures = {
@@ -25,7 +27,8 @@ type MyFixtures = {
     datePickerPage: DatePickerPage;
     uploadDownloadPage: UploadDownloadPage;
     formPage: FormPage;
-
+    browserWindowsPage: BrowserWindowsPage;
+    sortablePage: SortablePage;
 };
 
 // Exportamos un NUEVO objeto 'test' que extiende al original
@@ -84,6 +87,16 @@ export const test = base.extend<MyFixtures>({
     formPage: async ({ page }, use) => {
         const fPage = new FormPage(page);
         await use(fPage);
+    },
+
+    browserWindowsPage: async ({ page }, use) => {
+        const bwPage = new BrowserWindowsPage(page);
+        await use(bwPage);
+    },
+
+    sortablePage: async ({ page }, use) => {
+        const sPage = new SortablePage(page);
+        await use(sPage);
     }
 
 });
